@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:jareeda/models/Article.dart';
 import 'package:http/http.dart' as http;
 
 class ArticleService {

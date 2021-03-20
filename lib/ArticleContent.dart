@@ -16,13 +16,7 @@ class ArticleContent extends StatelessWidget {
     var item = ArticleService().getContent(idNewspaper, id);
 
     return Scaffold(
-      appBar: AppBar(
-          title: Text(
-        title,
-        style: TextStyle(
-          fontSize: 15.0,
-        ),
-      )),
+      appBar: AppBar(title: Text(title, style: TextStyle(fontSize: 15.0))),
       body: Directionality(
           textDirection: this.direction, child: MyContentView(item)),
     );
