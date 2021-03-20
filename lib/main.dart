@@ -2,23 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:jareeda/JaridaButton.dart';
 
 void main() {
-  return runApp(MaterialApp(
-    home: Scaffold(
+  return runApp(
+    MaterialApp(
+        home: Scaffold(
       appBar: AppBar(
         title: Text('Jareeda'),
       ),
-      body: HomePage(),
-    ),
-  ));
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('images/background.jpg'), fit: BoxFit.cover),
+        ),
+        child: HomePage(),
+      ),
+    )),
+  );
 }
 
 class HomePage extends StatelessWidget {
   List<JaridaButton> jareedas = [
     JaridaButton(
-        'الشروق', 'echourouk', 'images/echourouk.jpg', TextDirection.rtl),
-    JaridaButton('الخبر', 'elkhabar', 'images/elkhabar.jpg', TextDirection.rtl),
+        'الشروق', 'echourouk', 'images/echourouk.png', TextDirection.rtl),
+    JaridaButton('الخبر', 'elkhabar', 'images/elkhabar.png', TextDirection.rtl),
     JaridaButton(
-        'El Watan', 'elwatan', 'images/elwatan.jpg', TextDirection.ltr),
+        'El Watan', 'elwatan', 'images/elwatan.png', TextDirection.ltr),
     JaridaButton('Le Quotidien d\'Oran', 'quotidienOran',
         'images/quotidienoran.jpg', TextDirection.ltr)
   ];
