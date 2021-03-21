@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/style.dart';
 import 'package:jareeda/SpinnerWidget.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MyContentView extends StatelessWidget {
   final Future<String> item;
@@ -36,15 +37,38 @@ class MyHtmlView extends StatefulWidget {
 }
 
 class _MyHtmlViewState extends State<MyHtmlView> {
-  var _fontSize = 18.0;
+  double _fontSize = 18.0;
 
-  InscreaseFontSize() => setState(() {
-        _fontSize++;
-      });
+  changeFontSize(double size) => _saveFontSizeToPrefs(size);
 
-  DecreaseFontSize() => setState(() {
-        _fontSize--;
-      });
+  @override
+  void initState() {
+    super.initState();
+    _loadFontSizeFromPrefs();
+  }
+
+  void _saveFontSizeToPrefs(double size) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    double newFontSize = _fontSize + size;
+    await prefs.setDouble('fontSize', newFontSize);
+
+    setState(() {
+      _fontSize = newFontSize;
+    });
+  }
+
+  void _loadFontSizeFromPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+    double fontSize = prefs.getDouble('fontSize');
+    if (fontSize == null) {
+      fontSize = 18.0;
+    }
+
+    setState(() {
+      _fontSize = fontSize;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

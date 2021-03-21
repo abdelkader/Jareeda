@@ -17,17 +17,34 @@ class ArticleContent extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(title, style: TextStyle(fontSize: 15.0)),
+        title: Text('', style: TextStyle(fontSize: 15.0)),
         actions: [
           Padding(
-              padding: EdgeInsets.only(right: 20.0),
+              padding: EdgeInsets.only(right: 2.0),
               child: IconButton(
                 icon: Icon(
-                  Icons.format_size_rounded,
+                  Icons.exposure_minus_1,
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  MyHtmlView.globalKey.currentState.InscreaseFontSize();
+                  MyHtmlView.globalKey.currentState.changeFontSize(-1);
+                },
+              )),
+          Padding(
+              padding: EdgeInsets.only(top: 16.0),
+              child: Text(
+                'A',
+                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+              )),
+          Padding(
+              padding: EdgeInsets.only(right: 2.0),
+              child: IconButton(
+                icon: Icon(
+                  Icons.exposure_plus_1,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  MyHtmlView.globalKey.currentState.changeFontSize(1);
                 },
               )),
         ],
