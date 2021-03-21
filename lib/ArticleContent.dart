@@ -26,7 +26,9 @@ class ArticleContent extends StatelessWidget {
                   Icons.format_size_rounded,
                   color: Colors.white,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  MyHtmlView.globalKey.currentState.InscreaseFontSize();
+                },
               )),
         ],
       ),

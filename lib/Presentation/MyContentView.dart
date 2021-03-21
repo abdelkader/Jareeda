@@ -27,7 +27,9 @@ class MyContentView extends StatelessWidget {
 class MyHtmlView extends StatefulWidget {
   final String data;
 
-  MyHtmlView(this.data);
+  MyHtmlView(this.data) : super(key: globalKey);
+
+  static final GlobalKey<_MyHtmlViewState> globalKey = GlobalKey();
 
   @override
   _MyHtmlViewState createState() => _MyHtmlViewState();
@@ -36,8 +38,12 @@ class MyHtmlView extends StatefulWidget {
 class _MyHtmlViewState extends State<MyHtmlView> {
   var _fontSize = 18.0;
 
-  methodInChild() => setState(() {
+  InscreaseFontSize() => setState(() {
         _fontSize++;
+      });
+
+  DecreaseFontSize() => setState(() {
+        _fontSize--;
       });
 
   @override
